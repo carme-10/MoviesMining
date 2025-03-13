@@ -20,19 +20,11 @@ def main():
 
     preprocessing.date_manipulation('release_date')
     
-    preprocessing.string_to_list('genres')
-    preprocessing.one_hot_encoding_list('genres')
-
+    preprocessing.one_hot_encoding_list('genres', True)
     preprocessing.frequency_encoding('original_language')
-
-    preprocessing.string_to_list('production_companies')
-    preprocessing.frequency_encoding_list('production_companies')
-
-    preprocessing.string_to_list('production_countries')
-    preprocessing.frequency_encoding_list('production_countries')
-
-    preprocessing.string_to_list('spoken_languages')
-    preprocessing.frequency_encoding_list('spoken_languages')
+    preprocessing.frequency_encoding_list('production_companies', True)
+    preprocessing.frequency_encoding_list('production_countries', True)
+    preprocessing.frequency_encoding_list('spoken_languages', True)
 
     preprocessing.clean(['status', 'id', 'overview', 'popularity', 'vote_count'])
 

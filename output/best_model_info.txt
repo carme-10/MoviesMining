@@ -1,1 +1,1 @@
-{'MSE on test set': 0.569478424424259, 'RMSE on test set': 0.7546379426084133, 'Parameters': {'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}, 'Variance target': 0.8895982191404211, 'MSE on the whole dataset': 0.10672023162070944}
+{'MSE on test set': 0.5501975631607511, 'RMSE on test set': 0.7417530338062333, 'Parameters': {'max_depth': 30, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 10, 'n_estimators': 200}, 'Variance target': 0.8895982191404211, 'MSE on the whole dataset': 0.24157298078667552}

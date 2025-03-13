@@ -33,15 +33,16 @@ class Preprocessing:
         self.data[col] = self.data[col].map(frequency)
 
     #frequency encoding su colonna che contiene liste di elementi
-    def frequency_encoding_list(self, col:str):
+    def frequency_encoding_list(self, col:str, string_to_list:bool):
+        if string_to_list:
+            self.string_to_list(col)
         frequency = self.data[col].explode().value_counts(normalize=True)
         self.data[col] = self.data[col].apply(lambda x: np.mean([frequency[i] for i in x]))
 
-    def one_hot_encoding_list(self, col:str):
+    def one_hot_encoding_list(self, col:str, string_to_list:bool):
+
+        if string_to_list:
+            self.string_to_list(col)
 
         self.data = self.data.join(pd.get_dummies(self.data[col].explode()).groupby(level=0).sum())
         self.data = self.data.drop(columns=col)
-
-    # def standardize(self, ax=0):
-    #     standardize = lambda x: (x - x.mean()) / x.std()
-    #     self.data = self.data.apply(standardize, axis=ax)
