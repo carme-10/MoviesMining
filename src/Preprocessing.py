@@ -7,8 +7,11 @@ class Preprocessing:
     def __init__(self, data: pd.DataFrame):
         self.data = data
 
-    def clean(self, col:list[str]):
-        self.data = self.data.drop(columns=col)
+    def clean(self, col:list[str], drop:bool):
+        if drop:
+            self.data = self.data.drop(columns=col)
+        else:
+            self.data = self.data[col]
         self.data = self.data.dropna()
         self.data = self.data.reset_index(drop=True)
 
@@ -46,3 +49,14 @@ class Preprocessing:
 
         self.data = self.data.join(pd.get_dummies(self.data[col].explode()).groupby(level=0).sum())
         self.data = self.data.drop(columns=col)
+
+    def run(self, operations: list[dict]):
+
+        print("Numero di righe e colonne prima del preprocessing: ", self.data.shape)
+        for operation in operations:
+            method = operation["type"]
+            method(self, **operation["params"])
+        print("Numero di righe e colonne dopo il preprocessing: ", self.data.shape)
+        print("Nome delle colonne: ", self.data.columns)
+
+
