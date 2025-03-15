@@ -24,6 +24,7 @@ class Regressor:
         grid_search.fit(X, y)
 
         self.grid_search = grid_search
+        joblib.dump(grid_search, "../output/grid_search.pkl")
  
     def evaluate(self):
 
@@ -49,9 +50,11 @@ class Regressor:
     def save_output(self):
         with open("../output/best_model_info.txt", "w") as f:
             f.write(str(self.best_model_info))
-        joblib.dump(self.grid_search.best_estimator_, "../output/best_model.pkl")
     
-    def run(self):
-        self.best_parameters_computing()
+    def run(self, use_saved_model:bool):
+        if use_saved_model:
+            self.grid_search = joblib.load("../output/grid_search.pkl")
+        else:
+            self.best_parameters_computing()
         self.evaluate()
         self.save_output()
