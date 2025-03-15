@@ -5,14 +5,17 @@ import operator
 class Preprocessing:
 
     def __init__(self, data: pd.DataFrame):
-        self.data = data
+        self.data = data.copy()
 
-    def clean(self, col:list[str], drop:bool):
+    def clean(self, col:list[str], drop:bool, duplicates_to_check:list[str]):
         if drop:
             self.data = self.data.drop(columns=col)
         else:
             self.data = self.data[col]
         self.data = self.data.dropna()
+        if duplicates_to_check is None:
+            duplicates_to_check = self.data.columns
+        self.data = self.data.drop_duplicates(subset=duplicates_to_check)
         self.data = self.data.reset_index(drop=True)
 
     def filter(self, col:str, value, operator):
