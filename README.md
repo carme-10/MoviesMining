@@ -19,7 +19,7 @@ E' possibile utilizzare il metodo *run* per effettuare varie operazioni di prepr
 
 ## operations.py
 
-Il file contiene le liste di configurazione che verrano passate 
+Il file contiene le liste di configurazione che verranno passate 
 al metodo *run* della classe Preprocessing.
 
 ## Regressor.py
