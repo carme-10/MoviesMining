@@ -3,6 +3,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import GridSearchCV
 import joblib
 import numpy as np
+import pandas as pd
 from params import param_grid
 
 class Regressor:
@@ -13,6 +14,7 @@ class Regressor:
 
         self.grid_search = None
         self.best_model_info = {}
+        self.feature_importances = None
 
     def best_parameters_computing(self):
 
@@ -47,9 +49,16 @@ class Regressor:
 
         self.best_model_info = info
 
+        feature_importances = best_model.feature_importances_
+        importance = pd.DataFrame({'Feature': X.columns, 'Importance': feature_importances})
+        importance = importance.sort_values(by='Importance', ascending=False)
+        self.feature_importances = importance
+
     def save_output(self):
         with open("../output/best_model_info.txt", "w") as f:
             f.write(str(self.best_model_info))
+            f.write("\n")
+            f.write(str(self.feature_importances))
     
     def run(self, use_saved_model:bool):
         if use_saved_model:

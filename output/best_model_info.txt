@@ -1,1 +1,30 @@
-{'MSE on test set': 0.5483704041241376, 'RMSE on test set': 0.7405203603710958, 'Parameters': {'max_depth': 30, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 6, 'n_estimators': 300}, 'Variance target': 0.8836343857864727, 'MSE on the whole dataset': 0.18124071921560478}
+{'MSE on test set': 0.5483312389131789, 'RMSE on test set': 0.7404939155139486, 'Parameters': {'max_depth': 29, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 6, 'n_estimators': 300}, 'Variance target': 0.8836343857864727, 'MSE on the whole dataset': 0.18479506973399784}
+                 Feature  Importance
+0                runtime    0.166955
+8                   year    0.124563
+3   production_companies    0.102166
+7        day_of_the_year    0.086295
+19                Horror    0.077743
+4   production_countries    0.059919
+5       spoken_languages    0.055660
+2      original_language    0.042974
+6            day_of_week    0.042212
+14           Documentary    0.034265
+15                 Drama    0.031842
+11             Animation    0.030631
+23       Science Fiction    0.016954
+9                 Action    0.015582
+12                Comedy    0.015479
+25              Thriller    0.015394
+20                 Music    0.010325
+22               Romance    0.009893
+13                 Crime    0.008837
+21               Mystery    0.008733
+17               Fantasy    0.008603
+10             Adventure    0.008589
+16                Family    0.008028
+24              TV Movie    0.006853
+18               History    0.004344
+26                   War    0.003970
+27               Western    0.002512
+1                  adult    0.000681
